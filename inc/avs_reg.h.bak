@@ -1,0 +1,373 @@
+/*
+ *                                                                          
+ * Copyright (c)  :2022-03-14  AIIT Design Systems Inc.   /
+ * Permission is hereby granted, free of charge, to any person obtaining  /
+ * a copy of this software and associated documentation files (the   /
+ * Software), to deal in the Software without restriction, including   /
+ * without limitation the rights to use, copy, modify, merge, publish, 
+ * distribute, sublicense, and/or sell copies of the Software, and to   /
+ * permit persons to whom the Software is furnished to do so, subject to   /
+ * the following conditions:  /
+ * The above copyright notice and this permission notice shall be included   /
+ * in all copies or substantial portions of the Software.  /
+ *                                                                          
+ * THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND,  /
+ * EXPRESS OR IPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF  /
+ * ERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  /
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY   /
+ * CLAI, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,  /
+ * TORT OR OTHERWISE, ARISING FRO, OUT OF OR IN CONNECTION WITH THE   /
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  /
+ *  
+ *
+ */
+
+#ifndef _AVS_REG__H
+#define _AVS_REG__H
+
+#include <string.h>
+
+/*! @brief  [AIIT]:	avs register base space    */
+#define AVS_REG_BASE										(0x00200000)
+#define AVS_IRQ_OFFSET                                      (0)
+#define AVS_REG_FETCH1_BASE									(AVS_REG_BASE + 0x1000)
+#define AVS_REG_FETCH2_BASE									(AVS_REG_BASE + 0x2000)
+#define AVS_REG_MD_BASE										(AVS_REG_BASE + 0x3000)
+#define AVS_REG_AEC_BASE									(AVS_REG_BASE + 0x4000)
+#define DDR_BASE1											(0x80000000)
+#define DDR_BASE2											(0x20000000)
+
+#define AVS_REG_CAP	(4096)
+
+/*! @brief  [AIIT]:	avs FETCH ddr register base space    */
+#define FETCH_CTX_IO_CTX_PINTER_REFP_PTR_OFFSET 			4
+#define FETCH_CTX_IO_REF_PTR_DBK_OFFSET						6
+#define FETCH_CTX_IO_REFP_PTR_TEST_OFFSET					8	
+#define FETCH_CTX_IO_IS_LIBRARY_PICTURE_OFFSET				10			
+#define FETCH_CTX_IO_SLICE_SAO_ENABLE_OFFSET				12
+#define FETCH_CTX_IO_REFP_PTR_OFFSET						14
+#define FETCH_CTX_IO_UMVEOFFSETPICCOUNT_OFFSET				16
+#define FETCH_CTX_IO_CU_DELTA_QP_LCU_MAP_OFFSET				18
+#define MAP_MV_OFFSET										20
+#define MAP_REFI_OFFSET										22
+#define MAP_SCU_OFFSET										24
+#define MAP_CU_MODE_OFFSET									26
+#define CTU_CTRL_INPUT_LAMBDA_OFFSET						28
+#define CTU_CTRL_INPUT_DIST_CHROMA_WEIGHT_OFFSET			30
+#define CTU_CTRL_INPUT_CUQPMAP_OFFSET						32
+#define CTU_CTRL_INPUT_CUQPMAP_FRAME_OFFSET					34
+#define IMGY_ORG_OFFSET										36
+#define IMGU_ORG_OFFSET										38
+#define IMGV_ORG_OFFSET										40
+#define CTX_PINTER_REFP_MAP_MV_0_OFFSET						42
+#define CTX_PINTER_REFP_MAP_MV_1_OFFSET						44
+#define CTX_PINTER_REFP_MAP_REFI_0_OFFSET					46
+#define CTX_PINTER_REFP_MAP_REFI_1_OFFSET					48
+#define LIST_PTR_0_OFFSET									50
+#define LIST_PTR_1_OFFSET									52
+
+/*! @brief  [AIIT]:	avs FETCH register base space    */
+#define MULTISLICE_MODE 												4
+#define FETCH_CTX_IO_CTX_PTR 											6
+#define FETCH_CTX_IO_CTX_PINTER_REFP_PIC_HEIGHT_CHROMA 					8
+#define FETCH_CTX_IO_CTX_PINTER_REFP_PIC_HEIGHT_LUMA 					10
+#define FETCH_CTX_IO_CTX_PINTER_REFP_PIC_STRIDE_CHROMA 					12
+#define FETCH_CTX_IO_CTX_PINTER_REFP_PIC_STRIDE_LUMA 					14
+#define FETCH_CTX_IO_CTX_PINTER_REFP_PIC_WIDTH_CHROMA 					16
+#define FETCH_CTX_IO_CTX_PINTER_REFP_PIC_WIDTH_LUMA 					18
+#define FETCH_CTX_IO_CTX_INFO_PIC_WIDTH 								20
+#define FETCH_CTX_IO_CTX_INFO_PIC_HEIGHT 								22
+#define FETCH_CTX_IO_CTX_INFO_PIC_WIDTH_IN_LCU 							24
+#define FETCH_CTX_IO_CTX_INFO_PIC_HEIGHT_IN_LCU 						26
+#define FETCH_CTX_IO_CTX_INFO_PIC_WIDTH_IN_SCU 							28
+#define FETCH_CTX_IO_CTX_INFO_PIC_HEIGHT_IN_SCU 						30
+#define FETCH_CTX_IO_CTX_INFO_PIC_HEADER_CHROMA_QUANT_PARAM_DELTA_CB 	32
+#define FETCH_CTX_IO_CTX_INFO_PIC_HEADER_CHROMA_QUANT_PARAM_DELTA_CR 	34
+#define FETCH_CTX_IO_CTX_INFO_PIC_HEADER_SLICE_TYPE 					36
+#define FETCH_CTX_IO_SAMPLE_ADAPTIVE_OFFSET_ENABLE_FLAG 				38
+#define FETCH_CTX_IO_STRIDE_LUMA 										40
+#define FETCH_CTX_IO_STRIDE_CHROMA 										42
+#define FETCH_CTX_IO_LCU_CNT 											44
+#define FETCH_CTX_IO_FLAG_VALID_MAP_MV 									46
+#define FETCH_CTX_IO_FLAG_VALID_MAP_REFI 								48
+#define FETCH_CTX_IO_FLAG_VALID_LIST_PTR 								50
+#define FETCH_CTX_IO_FLAG_VALID_MAP_MV_1 								52
+#define FETCH_CTX_IO_FLAG_VALID_MAP_REFI_1 								54
+#define FETCH_CTX_IO_FLAG_VALID_LIST_PTR_1 								56
+#define FETCH_CTX_IO_USE_DEBLOCK 										58
+#define FETCH_CTX_IO_LOG2_CULINE 										60
+#define FETCH_CTX_IO_MAX_CUWH 											62
+#define FETCH_CTX_IO_AFFINE_ENABLE_FLAG 								64
+#define FETCH_CTX_IO_UMVE_ENABLE_FLAG 									66
+#define FETCH_CTX_IO_NUM_OF_HMVP_CAND 									68
+#define FETCH_CTX_IO_AMVR_ENABLE_FLAG 									70
+#define FETCH_CTX_IO_EMVR_ENABLE_FLAG 									72
+#define FETCH_CTX_IO_DT_INTRA_ENABLE_FLAG 								74
+#define FETCH_CTX_IO_POSITION_BASED_TRANSFORM_ENABLE_FLAG 				76
+#define FETCH_CTX_IO_TSCPM_ENABLE_FLAG 									78
+#define FETCH_CTX_IO_IPF_ENABLE_FLAG 									80
+#define FETCH_CTX_IO_FIXED_SLICE_QP_FLAG 								82
+#define FETCH_CTX_IO_CU_DELTA_QP_FLAG 									84
+#define FETCH_CTX_IO_PH_ISTS_ENABLE_FLAG 								86
+#define FETCH_CTX_IO_PH_EPMC_MODEL_FLAG 								88
+#define FETCH_CTX_IO_IBC_FLAG 											90
+#define FETCH_CTX_IO_SP_PIC_FLAG 										92
+#define FETCH_CTX_IO_EVS_UBVS_PIC_FLAG 									94
+#define FETCH_CTX_IO_UMVE_SET_FLAG 										96
+#define FETCH_CTX_IO_PH_IPC_FLAG 										98
+#define FETCH_CTX_IO_CU_QP_GROUP_AREA_SIZE 								100
+#define FETCH_CTX_IO_SLICE_QP 											102
+#define FETCH_CTX_IO_MIN_CU_SIZE 										104
+#define FETCH_CTX_IO_MAX_PART_RATIO 									106
+#define FETCH_CTX_IO_MAX_SPLIT_TIMES 									108
+#define FETCH_CTX_IO_MIN_QT_SIZE 										110
+#define FETCH_CTX_IO_MAX_BT_SIZE 										112
+#define FETCH_CTX_IO_MAX_EQT_SIZE 										114
+#define FETCH_CTX_IO_MAX_DT_SIZE 										116
+#define FETCH_CTX_IO_ABVR_ENABLE_FLAG 									118
+#define FETCH_CTX_IO_UMVE_ENH_ENABLE_FLAG 								120
+#define FETCH_CTX_IO_AWP_ENABLE_FLAG 									122
+#define FETCH_CTX_IO_AWP_MVR_ENABLE_FLAG 								124
+#define FETCH_CTX_IO_ETMVP_ENABLE_FLAG 									126
+#define FETCH_CTX_IO_AFFINE_UMVE_ENABLE_FLAG 							128
+#define FETCH_CTX_IO_SMVD_ENABLE_FLAG 									130
+#define FETCH_CTX_IO_BGC_ENABLE_FLAG 									132
+#define FETCH_CTX_IO_INTERPF_ENABLE_FLAG 								134
+#define FETCH_CTX_IO_IPC_ENABLE_FLAG 									136
+#define FETCH_CTX_IO_NUM_OF_MVAP_CAND 									138
+#define FETCH_CTX_IO_NUM_OF_HBVP_CAND 									140
+#define FETCH_CTX_IO_ENHANCE_TSCPM_ENABLE_FLAG							142
+#define FETCH_CTX_IO_PMC_ENABLE_FLAG 									144
+#define FETCH_CTX_IO_IIP_ENABLE_FLAG 									146
+#define FETCH_CTX_IO_SAWP_ENABLE_FLAG 									148
+#define FETCH_CTX_IO_SBT_ENABLE_FLAG 									150
+#define FETCH_CTX_IO_ISTS_ENABLE_FLAG 									152
+#define FETCH_CTX_IO_SRCC_ENABLE_FLAG 									154
+#define FETCH_CTX_IO_EIPM_ENABLE_FLAG 									156
+#define FETCH_CTX_IO_ST_CHROMA_ENABLE_FLAG 								158
+#define FETCH_CTX_IO_EST_ENABLE_FLAG 									160
+#define FETCH_CTX_IO_LOG2_MAX_CUWH 										162
+#define FETCH_CTX_IO_BIT_DEPTH_INPUT 									164
+#define FETCH_CTX_IO_QP_OFFSET_BIT_DEPTH 								166
+#define FETCH_CTX_IO_TEMPORAL_ID 										168
+#define FETCH_CTX_IO_DATACOL 											170
+#define FETCH_CTX_IO_CONS_PRED_MODE 									172
+#define FETCH_CTX_IO_TREE_STATUS 										174
+#define FETCH_CTX_IO_NUM_DELTA_QP 										176
+#define FETCH_CTX_IO_PRED_QP 											178
+#define FETCH_CTX_IO_CU_QP_GROUP_X 										180
+#define FETCH_CTX_IO_CU_QP_GROUP_Y 										182
+#define CTX_RPM_NUM_REFP_0 												184
+#define CTX_RPM_NUM_REFP_1 												186
+#define CTX_LCU_CNT 													188
+#define CTX_LCU_CNT_CTRL 												189
+#define CTU_CTRL_INPUT_F_LCU 											190
+#define CTU_CTRL_INPUT_SLICE_ENABLE 									192
+#define CTU_CTRL_INPUT_QP_Y 											194
+#define CTU_CTRL_INPUT_QP_U 											196
+#define CTU_CTRL_INPUT_QP_V 											198
+#define CTU_CTRL_INPUT_LAMBDA_MV 										200
+#define CTU_CTRL_INPUT_MIPF_ENABLE_FLAG 								202
+#define CTU_CTRL_INPUT_BIT_DEPTH_INTERNAL 								204
+#define CTU_CTRL_INPUT_DEPTH 											206
+#define CTU_CTRL_INPUT_CU_DQP_ENABLE 									208
+#define CTU_CTRL_INPUT_USECUQPMAP 										210
+#define CODE_STRU 														212
+#define MDREG_SYS_V_1 													214
+#define MDREG_SYS_V_2 													215
+#define MDREG_SYS_V_3 													216
+#define MDREG_SYS_V_4 													217
+#define MDREG_COND0_V_1 												219
+#define MDREG_COND0_V_2 												220
+#define MDREG_COND0_V_3 												221
+#define MDREG_COND0_V_4													222
+#define MDREG_COND0_V_5 												223
+#define MDREG_COND0_V_6 												224
+#define MDREG_COND0_V_7 												225
+#define MDREG_COND0_V_8 												226
+#define MDREG_COND0_V_9 												227
+#define MDREG_COND0_V_10 												228
+#define MDREG_COND0_V_11 												229
+#define MDREG_COND0_V_12 												230
+#define MDREG_COND0_V_13 												231
+#define MDREG_COND0_V_14 												232
+#define MDREG_COND0_V_15 												233
+#define MDREG_COND0_V_16 												234
+#define MDREG_COND0_V_17 												235
+#define MDREG_COND0_V_18 												236
+#define MDREG_COND0_V_19 												237
+#define MDREG_COND0_V_20 												238
+#define MDREG_COND0_V_21 												239
+#define MDREG_COND0_V_22 												240
+#define MDREG_COND0_V_23 												241
+#define MDREG_COND0_V_24 												242
+#define MDREG_COND0_V_25 												243
+#define MDREG_COND0_V_26 												244
+#define MDREG_COND0_V_27 												245
+#define MDREG_COND0_V_28 												246
+#define MDREG_COND0_V_29 												247
+#define MDREG_COND0_V_30 												248
+#define MDREG_COND0_V_31 												249
+#define MDREG_COND0_V_32 												250
+#define MDREG_COND1_V_1 												252
+#define MDREG_COND1_V_2 												253
+#define MDREG_COND1_V_3 												254
+#define MDREG_COND1_V_4 												255
+#define MDREG_COND1_V_5 												256
+#define MDREG_COND1_V_6 												257
+#define MDREG_COND1_V_7 												258
+#define MDREG_COND1_V_8 												259
+#define MDREG_COND1_V_9 												260
+#define MDREG_COND1_V_10 												261
+#define MDREG_COND1_V_11 												262
+#define MDREG_COND1_V_12 												263
+#define MDREG_COND1_V_13 												264
+#define MDREG_COND1_V_14 												265
+#define MDREG_COND1_V_15 												266
+#define MDREG_COND1_V_16 												267
+#define MDREG_COND1_V_17 												268
+#define MDREG_COND1_V_18 												269
+#define MDREG_COND1_V_19 												270
+#define MDREG_COND1_V_20 												271
+#define MDREG_COND1_V_21 												272
+#define MDREG_COND1_V_22 												273
+#define MDREG_COND1_V_23 												274
+#define MDREG_COND1_V_24 												275
+#define MDREG_COND1_V_25 												276
+#define MDREG_COND1_V_26 												277
+#define MDREG_COND1_V_27 												278
+#define MDREG_COND1_V_28 												279
+#define MDREG_COND1_V_29 												280
+#define MDREG_COND1_V_30 												281
+#define MDREG_COND1_V_31 												282
+#define MDREG_COND1_V_32 												283
+#define MDREG_CFG0_V_1 													285
+#define MDREG_CFG0_V_2 													286
+#define MDREG_CFG0_V_3 													287
+#define MDREG_CFG0_V_4 													288
+#define MDREG_CFG0_V_5 													289
+#define MDREG_CFG0_V_6 													290
+#define MDREG_CFG0_V_7 													291
+#define MDREG_CFG0_V_8 													292
+#define MDREG_CFG0_V_9 													293
+#define MDREG_CFG0_V_10 												294
+#define MDREG_CFG0_V_11 												295
+#define MDREG_CFG0_V_12 												296
+#define MDREG_CFG0_V_13 												297
+#define MDREG_CFG0_V_14 												298
+#define MDREG_CFG0_V_15 												299
+#define MDREG_CFG0_V_16 												300
+#define MDREG_CFG0_V_17 												301
+#define MDREG_CFG0_V_18 												302
+#define MDREG_CFG0_V_19 												303
+#define MDREG_CFG0_V_20 												304
+#define MDREG_CFG0_V_21 												305
+#define MDREG_CFG0_V_22 												306
+#define MDREG_CFG0_V_23 												307
+#define MDREG_CFG0_V_24 												308
+#define MDREG_CFG0_V_25 												309
+#define MDREG_CFG0_V_26 												310
+#define MDREG_CFG0_V_27 												311
+#define MDREG_CFG0_V_28 												312
+#define MDREG_CFG0_V_29 												313
+#define MDREG_CFG0_V_30 												314
+#define MDREG_CFG0_V_31 												315
+#define MDREG_CFG0_V_32 												316
+#define MDREG_CFG1_V_1 													318
+#define MDREG_CFG1_V_2 													319
+#define MDREG_CFG1_V_3 													320
+#define MDREG_CFG1_V_4 													321
+#define MDREG_CFG1_V_5 													322
+#define MDREG_CFG1_V_6 													323
+#define MDREG_CFG1_V_7 													324
+#define MDREG_CFG1_V_8 													325
+#define MDREG_CFG1_V_9 													326
+#define MDREG_CFG1_V_10 												327
+#define MDREG_CFG1_V_11 												328
+#define MDREG_CFG1_V_12 												329
+#define MDREG_CFG1_V_13 												330
+#define MDREG_CFG1_V_14 												331
+#define MDREG_CFG1_V_15 												332
+#define MDREG_CFG1_V_16 												333
+#define MDREG_CFG1_V_17 												334
+#define MDREG_CFG1_V_18 												335
+#define MDREG_CFG1_V_19 												336
+#define MDREG_CFG1_V_20 												337
+#define MDREG_CFG1_V_21 												338
+#define MDREG_CFG1_V_22 												339
+#define MDREG_CFG1_V_23 												340
+#define MDREG_CFG1_V_24 												341
+#define MDREG_CFG1_V_25 												342
+#define MDREG_CFG1_V_26 												343
+#define MDREG_CFG1_V_27 												344
+#define MDREG_CFG1_V_28 												345
+#define MDREG_CFG1_V_29 												346
+#define MDREG_CFG1_V_30 												347
+#define MDREG_CFG1_V_31 												348
+#define MDREG_CFG1_V_32 												349
+#define FRAME_LEVEL_FW_CHROMA_QUANT_PARAM_DELTA_CB 						351
+#define FRAME_LEVEL_FW_QP_OFFSET_BIT_DEPTH 								353
+#define FRAME_LEVEL_FW_CHROMA_QUANT_PARAM_DELTA_CR 						355
+#define FRAME_LEVEL_FW_FIXED_SLICE_QP_FLAG 								357
+#define FRAME_LEVEL_FW_PIC_WIDTH 										359
+#define FRAME_LEVEL_FW_PIC_HEIGHT                                       361
+
+
+/*! @brief  [AIIT]:	avs md register base space    */
+#define MEM_LOAD_BUF_V_OFFSET								4
+#define MEM_PU_BUF_V_OFFSET									6
+#define MEM_STORE_BUF_V_OFFSET								8
+
+/*! @brief [AIIT]:  avs aec register base space */
+#define BS_DATA_OFFSET										4
+#define BYTE_CNT_FRAME								        6
+#define BYTE_CNT_FRAME_AP_VLD                               7
+#define BS_STATUS								            8
+#define BS_CLEAR										    10
+
+/*! @brief  [AIIT]:	AVS yuv data base address    */
+#define DRAM_BASE   (0x80000000)
+#define DRAM_CAP    (100*SZ_1M)
+
+#define SLICE_I                         	(1)
+#define SLICE_P                         	(2)
+#define SLICE_B								(3)
+
+/* Max. and avs3_min. Quantization parameter */
+#define MIN_QUANT                          0
+#define MAX_QUANT_BASE                     63
+#define FIXED_LAMBDA_NUM                   1000//ludd
+#define FIXED_SQRT_LAMBDA_NUM              65535//ludd
+
+#define COM_MAX(a,b)                   (((a) > (b)) ? (a) : (b))
+#define COM_MIN(a,b)                   (((a) < (b)) ? (a) : (b))
+#define COM_CLIP(n,avs3_min,avs3_max)            (((n)>(avs3_max))? (avs3_max) : (((n)<(avs3_min))? (avs3_min) : (n)))
+#define COM_CLIP3(min_x, max_x, value)   COM_MAX((min_x), COM_MIN((max_x), (value)))
+
+inline int wait_irq_pos(int val)
+{
+#ifdef RISCV_REGISTER_RW
+	uint32_t reg = 0;
+    uint32_t i = 0;
+
+    while(1){
+        reg = read_mreg32(sync_start);
+        if(val == 0){
+            if(((uint16_t)(reg >> 16)) == 0x0001)
+                break;
+        }
+		else{
+            if(i++ > 100000)
+                break;
+            else if (i % 20000 == 0)
+            {
+                //pr_log(DEBUG, "Delay time,wait process finish ......\n");
+                printf("Delay time,wait process finish ......\n");
+            }
+        }
+    }
+#endif
+	return 0;
+}
+
+#endif /* _AVS_REG__H */
